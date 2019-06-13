@@ -1,0 +1,22 @@
+// compile
+// protoc -I proto/ proto/ms.proto --go_out=plugins=grpc:proto
+syntax = "proto3";
+
+package ms;
+
+service FrequencyWords {
+    rpc Frequency (Text) returns (Response) {}
+}
+
+message FrequencyWord {
+    string word = 1;
+    int64 frequency = 2;
+}
+
+message Text {
+    string body = 1;
+}
+
+message Response {
+    repeated FrequencyWord FrequencyAll = 1;
+}
